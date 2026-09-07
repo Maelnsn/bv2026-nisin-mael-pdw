@@ -17,6 +17,12 @@
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "types": ["vitest/globals", "node"]
+    "types": ["vitest/globals", "node"],
+    "baseUrl": "./",
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@root/*": ["src/root/*"],
+      "@core/*": ["src/core/*"]
+    }
   }
 }
