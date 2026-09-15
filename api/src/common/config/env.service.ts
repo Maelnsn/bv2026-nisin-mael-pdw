@@ -13,6 +13,9 @@ export class EnvService {
   get appPort(): number {
     return this.get(ConfigKey.Port);
   }
+  get isProduction(): boolean {
+    return this.appMode === AppMode.Prod;
+  }
 
   get<T extends keyof ValidatedEnvironment>(key: T): ValidatedEnvironment[T] {
     return this.configService.get(key, { infer: true });
