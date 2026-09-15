@@ -1,5 +1,11 @@
 import { z } from 'zod';
 import { AppMode } from '../data/enum';
+
+//const booleanFromStringSchema = z
+// .enum(['true', 'false'])
+// .transform((value) => value === 'true');
+//const nonEmptyStringSchema = z.string().trim().min(1);
+
 const appModeSchema = z
   .enum(['DEV', 'TEST', 'PROD', 'development', 'test', 'production'])
   .transform((value) => {
@@ -21,6 +27,10 @@ const appModeSchema = z
 const environmentSchema = z.object({
   APP_PORT: z.coerce.number().int().min(1).max(65535).default(3000),
   NODE_ENV: appModeSchema,
+  //APP_NAME: nonEmptyStringSchema,
+  //LOG_LEVEL: z.nativeEnum(LogLevel),
+  //DB_SYNC: booleanFromStringSchema,
+  AUTH_PASSWORD_MIN_LENGTH: z.coerce.number().int().min(1).default(15),
 });
 
 export type ValidatedEnvironment = z.infer<typeof environmentSchema>;
