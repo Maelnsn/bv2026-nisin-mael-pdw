@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from '@nestjs/common';
 import { ValidatedEnvironment } from './environment/environment.validation';
 import { ConfigService } from '@nestjs/config';
-import { AppMode, ConfigKey } from './data/enum';
+import { AppMode, ConfigKey, LogLevel } from './data/enum';
 @Injectable()
 export class EnvService {
   constructor(
@@ -15,6 +16,12 @@ export class EnvService {
   }
   get isProduction(): boolean {
     return this.appMode === AppMode.Prod;
+  }
+  get logLevel(): LogLevel {
+    return this.get(ConfigKey.LogLevel);
+  }
+  get isTest(): boolean {
+    return this.appMode === AppMode.Test;
   }
 
   get<T extends keyof ValidatedEnvironment>(key: T): ValidatedEnvironment[T] {
