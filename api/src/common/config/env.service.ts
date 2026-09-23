@@ -12,7 +12,7 @@ export class EnvService {
     return this.get(ConfigKey.NodeEnv);
   }
   get appPort(): number {
-    return this.get(ConfigKey.Port);
+    return this.get(ConfigKey.AppPort);
   }
   get isProduction(): boolean {
     return this.appMode === AppMode.Prod;
