@@ -9,6 +9,7 @@ export class AppConfigModule {
   static register(): DynamicModule {
     return {
       module: AppConfigModule,
+      global: true,
       imports: [
         ConfigModule.forRoot({
           isGlobal: true,
