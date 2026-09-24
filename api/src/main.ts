@@ -4,6 +4,7 @@ import { AppModule } from '@root/app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger } from 'nestjs-pino';
 import { AppLogger } from '@common/logging/app-logger.service';
+import { ApiInterceptor } from '@common/api/interceptor/api-interceptor';
 
 const bootstrap = async (): Promise<void> => {
   const app = await NestFactory.create<NestExpressApplication>(
@@ -21,6 +22,7 @@ const bootstrap = async (): Promise<void> => {
 
   const appLogger = await app.resolve(AppLogger);
   appLogger.setContext('Bootstrap');
+  app.useGlobalInterceptors(app.get(ApiInterceptor));
   appLogger.application({
     event: 'application.started',
     port: envService.appPort,

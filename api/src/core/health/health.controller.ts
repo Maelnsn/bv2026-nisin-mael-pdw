@@ -1,4 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
+import { SkipApiTransform } from '@common/api/decorator';
+
+@SkipApiTransform()
 @Controller('health')
 export class HealthController {
   @Get('live')
