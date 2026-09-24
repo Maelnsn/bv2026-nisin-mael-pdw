@@ -16,13 +16,13 @@ const bootstrap = async (): Promise<void> => {
 
   app.useLogger(app.get(Logger));
   app.enableShutdownHooks();
+  app.useGlobalInterceptors(app.get(ApiInterceptor));
 
   const envService: EnvService = app.get(EnvService);
   await app.listen(envService.appPort);
 
   const appLogger = await app.resolve(AppLogger);
   appLogger.setContext('Bootstrap');
-  app.useGlobalInterceptors(app.get(ApiInterceptor));
   appLogger.application({
     event: 'application.started',
     port: envService.appPort,

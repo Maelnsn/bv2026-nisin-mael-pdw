@@ -11,4 +11,9 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+  @Get('Hello-v2')
+  @ApiSuccessCode(ApiCodeResponse.CommonSuccess)
+  getHellov2(): string {
+    return this.appService.getHello();
+  }
 }
