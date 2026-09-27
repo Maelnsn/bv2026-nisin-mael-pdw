@@ -5,6 +5,7 @@ import { AppConfigModule } from '@common/config/app-config.module';
 import { HealthModule } from '@core/health';
 import { LoggingModule } from '@common/logging/logging-module';
 import { ApiInterceptor } from '@common/api/interceptor/api-interceptor';
+import { HttpExceptionFilter } from '@common/api/filter/http-exception.filter';
 
 @Module({})
 export class AppModule {
@@ -13,7 +14,7 @@ export class AppModule {
       module: AppModule,
       imports: [AppConfigModule.register(), HealthModule, LoggingModule],
       controllers: [AppController],
-      providers: [AppService, ApiInterceptor],
+      providers: [AppService, ApiInterceptor, HttpExceptionFilter],
     };
   }
 }

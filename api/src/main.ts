@@ -4,9 +4,9 @@ import { AppModule } from '@root/app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger } from 'nestjs-pino';
 import { AppLogger } from '@common/logging/app-logger.service';
-import { ApiInterceptor } from '@common/api/interceptor/api-interceptor';
+import { configureApplication } from '@root/bootstrap/application-bootstrap';
 
-const bootstrap = async (): Promise<void> => {
+const bootstrap = async () => {
   const app = await NestFactory.create<NestExpressApplication>(
     AppModule.register(),
     {
@@ -14,14 +14,15 @@ const bootstrap = async (): Promise<void> => {
     },
   );
 
+  configureApplication(app);
   app.useLogger(app.get(Logger));
   app.enableShutdownHooks();
-  app.useGlobalInterceptors(app.get(ApiInterceptor));
-
-  const envService: EnvService = app.get(EnvService);
-  await app.listen(envService.appPort);
 
   const appLogger = await app.resolve(AppLogger);
+
+  const envService = app.get(EnvService);
+  await app.listen(envService.appPort);
+
   appLogger.setContext('Bootstrap');
   appLogger.application({
     event: 'application.started',
