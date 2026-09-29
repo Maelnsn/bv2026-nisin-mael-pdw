@@ -1,0 +1,10 @@
+CREATE USER pwd_user
+WITH PASSWORD 'P4mX8kR2vN7cT5qL9dF1sJ6wZ3bH0yKe';
+
+CREATE DATABASE pwd_db
+WITH
+  OWNER = pwd_user
+  ENCODING = 'UTF8'
+  TEMPLATE = template0;
+
+GRANT ALL PRIVILEGES ON DATABASE pwd_db TO pwd_user;
