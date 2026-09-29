@@ -7,6 +7,7 @@ import { LoggingModule } from '@common/logging/logging-module';
 import { ApiInterceptor } from '@common/api/interceptor/api-interceptor';
 import { HttpExceptionFilter } from '@common/api/filter/http-exception.filter';
 import { DatabaseModule } from '@common/database';
+import { AccountModule } from '@core/account';
 
 @Module({})
 export class AppModule {
@@ -18,6 +19,7 @@ export class AppModule {
         HealthModule,
         LoggingModule,
         DatabaseModule,
+        AccountModule,
       ],
       controllers: [AppController],
       providers: [AppService, ApiInterceptor, HttpExceptionFilter],
