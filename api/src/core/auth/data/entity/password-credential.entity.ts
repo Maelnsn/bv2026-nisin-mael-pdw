@@ -5,7 +5,11 @@ import { ULID_LENGTH } from '@common/database/identifier/ulid-util';
 
 @Entity({ name: 'password_credential' })
 @Index('uq_password_credential_account_id', ['accountId'], { unique: true })
-@ForeignKey(() => AccountEntity, ['accountId'], ['id'])
+@ForeignKey(() => AccountEntity, ['accountId'], ['id'], {
+  name: 'FK_password_credential_account',
+  onDelete: 'RESTRICT',
+  onUpdate: 'CASCADE',
+})
 export class PasswordCredentialEntity extends BasePersistenceEntity {
   @Column({ name: 'account_id', type: 'varchar', length: ULID_LENGTH })
   accountId!: string;

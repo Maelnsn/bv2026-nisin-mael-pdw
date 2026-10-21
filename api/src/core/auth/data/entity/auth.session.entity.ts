@@ -5,7 +5,11 @@ import { ULID_LENGTH } from '@common/database/identifier/ulid-util';
 
 @Entity({ name: 'auth_session' })
 @Index('idx_auth_session_account_id', ['accountId'])
-@ForeignKey(() => AccountEntity, ['accountId'], ['id'])
+@ForeignKey(() => AccountEntity, ['accountId'], ['id'], {
+  name: 'FK_auth_session_account',
+  onDelete: 'RESTRICT',
+  onUpdate: 'CASCADE',
+})
 export class AuthSessionEntity extends BasePersistenceEntity {
   @Column({ name: 'account_id', type: 'varchar', length: ULID_LENGTH })
   accountId!: string;
