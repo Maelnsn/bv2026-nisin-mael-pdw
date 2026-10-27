@@ -2,6 +2,15 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountModule } from '@core/account';
 import {
+  AuthIdentifierService,
+  PasswordCredentialService,
+  PasswordHasherService,
+  PasswordPolicyService,
+  AuthCookieService,
+  CsrfService,
+  TokenCryptoService,
+} from './service';
+import {
   AuthIdentifierEntity,
   PasswordCredentialEntity,
   AuthSessionEntity,
@@ -17,6 +26,15 @@ import {
       AuthSessionEntity,
       AuthRefreshTokenEntity,
     ]),
+  ],
+  providers: [
+    AuthIdentifierService,
+    PasswordCredentialService,
+    PasswordHasherService,
+    PasswordPolicyService,
+    AuthCookieService,
+    CsrfService,
+    TokenCryptoService,
   ],
 })
 export class AuthModule {}
