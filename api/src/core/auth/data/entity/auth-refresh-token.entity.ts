@@ -1,6 +1,6 @@
 import { Column, Entity, ForeignKey, Index } from 'typeorm';
 import { BasePersistenceEntity, ULID_LENGTH } from '@common/database';
-import { AuthSessionEntity } from './auth.session.entity';
+import { AuthSessionEntity } from './auth-session.entity';
 @Entity({ name: 'auth_refresh_token' })
 @Index('uq_auth_refresh_token_hash', ['tokenHash'], { unique: true })
 @Index('uq_auth_refresh_token_parent_id', ['parentId'], { unique: true })

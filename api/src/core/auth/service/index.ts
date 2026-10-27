@@ -5,3 +5,5 @@ export * from './password-policy.service';
 export * from './token-crypto.service';
 export * from './auth-identifier.service';
 export * from './password-credential.service';
+export * from './auth-session.service';
+export * from './refresh-token.service';

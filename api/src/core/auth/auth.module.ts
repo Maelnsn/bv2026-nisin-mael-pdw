@@ -9,6 +9,8 @@ import {
   AuthCookieService,
   CsrfService,
   TokenCryptoService,
+  RefreshTokenService,
+  AuthSessionService,
 } from './service';
 import {
   AuthIdentifierEntity,
@@ -35,6 +37,8 @@ import {
     AuthCookieService,
     CsrfService,
     TokenCryptoService,
+    RefreshTokenService,
+    AuthSessionService,
   ],
 })
 export class AuthModule {}

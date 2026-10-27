@@ -8,7 +8,7 @@ import { ApiInterceptor } from '@common/api/interceptor/api-interceptor';
 import { HttpExceptionFilter } from '@common/api/filter/http-exception.filter';
 import { DatabaseModule } from '@common/database';
 import { AccountModule } from '@core/account';
-
+import { AuthModule } from '@core/auth';
 @Module({})
 export class AppModule {
   static register(): DynamicModule {
@@ -20,6 +20,7 @@ export class AppModule {
         LoggingModule,
         DatabaseModule,
         AccountModule,
+        AuthModule,
       ],
       controllers: [AppController],
       providers: [AppService, ApiInterceptor, HttpExceptionFilter],
