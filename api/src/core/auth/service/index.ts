@@ -7,3 +7,4 @@ export * from './auth-identifier.service';
 export * from './password-credential.service';
 export * from './auth-session.service';
 export * from './refresh-token.service';
+export * from './auth.service';
