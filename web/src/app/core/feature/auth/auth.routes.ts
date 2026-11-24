@@ -27,4 +27,8 @@ export const authRoutes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    loadComponent: () => import('./page/').then((r) => r.FallbackPage),
+  },
 ];

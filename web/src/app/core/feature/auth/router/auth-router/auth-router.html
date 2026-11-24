@@ -1,2 +1,15 @@
-<p>auth-router works!</p>
-<router-outlet/>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="'/auth/sign-up'">S'inscrire</a>
+      </li>
+      <li>
+        <a [routerLink]="'/auth'">Se connecter</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <router-outlet/>
+</main>
