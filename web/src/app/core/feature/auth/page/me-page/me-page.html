@@ -1,1 +1,8 @@
-<p>me-page works!</p>
+<p>
+  Bonjour {{ firstname }} {{ name | uppercase }} <br> <!-- Interpolation (du composant vers l'interface graphique)-->
+  {{age}} ans <br> <br>
+  {{date | date:'dd/MM/yyyy'}} <br>
+  <button (click)="plusAge()">Augmenter l'âge</button> <!-- Event binding (interface graphique vers le composant)-->
+  <input type="text" [value]="firstname"> <br>  <!-- property binding (éviter de mettre une méthode) -->
+  <input type="text" [(ngModel)]="name"> <!-- two way binding -->
+</p>

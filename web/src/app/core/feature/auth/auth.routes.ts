@@ -22,7 +22,7 @@ export const authRoutes: Routes = [
       },
 
       {
-        path: 'me',
+        path: 'me/:name/:firstname',
         loadComponent: () => import('./page/').then((r) => r.MePage),
       },
     ],
